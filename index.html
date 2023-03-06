@@ -1,9 +1,8 @@
 <head>
-    <title>SHIBASNIPE 1.0.3</title>
+    <title>SHIBASNIPE 1.0.4</title>
     <link rel="stylesheet" href="styles.css"></link>
     <link rel="icon" type="image/x-icon" href="assets/just_dog.png">
 </head>
-
 
 <body>
 
@@ -14,7 +13,7 @@
 <div id="overall">
     <img src="assets/vert_long.png" class="vert_long"/>
     <img src="assets/horiz_long.png" class="horiz_long"/>
-    <h3 id="title">SHIBASNIPE 1.0.3</h3>
+    <h3 id="title">SHIBASNIPE 1.0.4</h3>
     <h3 class="label" id="from">From</h3>
 
     <div class="greyDiv square nonselect" id="fromShiba">
@@ -39,7 +38,7 @@
     <img src="assets/horiz_short.png" class="horiz_short hs2">
 
     <div id="slippageBox">
-        <input id="slippage" placeholder="100" class="greyDiv medwidth disabledInput"/>
+        <input oninput=onSlippageEdited() id="slippage" placeholder="100" class="greyDiv medwidth"/>
         <h3 class="label">Slippage</h3>
         <h3 class="tail">&nbsp;%</h3>
     </div>
@@ -74,7 +73,7 @@
     <img src="assets/vert_short.png" class="vert_short vs2">
 
     <button id="swapButton">
-        <div class="triangle-right"></div>
+        <h3 class="snipeText">SNIPE</h3>
     </button>  
     
     <h3  class="label" id="ryoshiLabel">Ryoshi Mode</h3>
