@@ -1,46 +1,60 @@
 <head>
-    <title>SHIBASNIPE 1.0.4</title>
+    <title>SHIBASNIPE 1.1.0</title>
     <link rel="stylesheet" href="styles.css"></link>
     <link rel="icon" type="image/x-icon" href="assets/just_dog.png">
 </head>
 
 <body>
-
-<img src="assets/dog1.jpg" style="position: absolute; left: 20px; top: 0px; opacity: 0.03"></image>
-<img src="assets/just_dog.png" style="position: absolute; top: 10px; left: 10px; width: 90px;"></image>
+<div class="bg" style="height:100%; background-position: center; background-repeat:no-repeat; background-size: cover; opacity: 0.25"></div>
 <div id="connectWallet" class="greyDiv">Connect</div>
 
 <div id="overall">
-    <img src="assets/vert_long.png" class="vert_long"/>
-    <img src="assets/horiz_long.png" class="horiz_long"/>
-    <h3 id="title">SHIBASNIPE 1.0.4</h3>
-    <h3 class="label" id="from">From</h3>
+  
+    <h3 id="title">SHIBASNIPE 1.1.0</h3>
 
-    <div class="greyDiv square nonselect" id="fromShiba">
-         <img id="fromShibaImg" src="assets/shiba.png" class="icon nonselecticon"></img>
+    <div class="fromBox">
+        <h3 class="label" id="from">From</h3>
+
+        <div class="greyDiv square nonselect" id="fromShiba">
+            <img id="fromShibaImg" src="assets/shiba.png" class="icon nonselecticon"></img>
+        </div>
+
+        <div class="greyDiv square nonselect" id="fromBone">
+            <img id="fromBoneImg"  src="assets/bone.png" class="icon nonselecticon"></img>
+        </div>
+
+        <div class="greyDiv square select" id="fromETH">
+            <img id="fromETHImg"  src="assets/eth.png" class="icon"></img>
+        </div>
+
+        <input placeholder="0x" class="greyDiv" id="fromCustom"  oninput=onAddressTypedCustomFrom() onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || ( ( event.charCode == 120 || (event.charCode >= 65 && event.charCode < 71)) || (event.charCode >= 97 && event.charCode < 103)) '/>
+
+        <h3 class="label" id="to">To</h3>
+
+        <input placeholder="0x" class="greyDiv" id="toCustom"  oninput=onAddressTyped() onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || ( ( event.charCode == 120 || (event.charCode >= 65 && event.charCode < 71)) || (event.charCode >= 97 && event.charCode < 103)) '/>
+
     </div>
 
-    <div class="greyDiv square nonselect" id="fromBone">
-        <img id="fromBoneImg"  src="assets/bone.png" class="icon nonselecticon"></img>
-    </div>
+<!--
+    <div class="horiz_short hs1"></div>
+    <div class="horiz_short hs2"></div>
+    <div class="vert_short vs1"></div>
+    <div class="vert_short vs2"></div>
+-->
 
-    <div class="greyDiv square select" id="fromETH">
-        <img id="fromETHImg"  src="assets/eth.png" class="icon"></img>
-    </div>
+<div class="amountInBox"> 
+    <h3 id="amountInlabel" class="label">Amount In / Tokens</h3>
+    <input placeholder="0.0" id="amountIn" class="greyDiv select"/>
+    <div id="maxButton" class="greyDiv">MAX</div>
+    </div> 
 
-    <input placeholder="0x" class="greyDiv" id="fromCustom"  oninput=onAddressTypedCustomFrom() onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || ( ( event.charCode == 120 || (event.charCode >= 65 && event.charCode < 71)) || (event.charCode >= 97 && event.charCode < 103)) '/>
 
-    <h3 class="label" id="to">To</h3>
-
-    <input placeholder="0x" class="greyDiv" id="toCustom"  oninput=onAddressTyped() onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || ( ( event.charCode == 120 || (event.charCode >= 65 && event.charCode < 71)) || (event.charCode >= 97 && event.charCode < 103)) '/>
-
-    <img src="assets/horiz_short.png" class="horiz_short hs1">
-    <img src="assets/horiz_short.png" class="horiz_short hs2">
+    <div class="optionsBox">
 
     <div id="slippageBox">
-        <input oninput=onSlippageEdited() id="slippage" placeholder="100" class="greyDiv medwidth"/>
+        <input oninput=onSlippageEdited() id="slippage" placeholder="100" class="greyDiv slipwidth"/>
         <h3 class="label">Slippage</h3>
-        <h3 class="tail">&nbsp;%</h3>
+        <h3 class="tail">&nbsp;&nbsp;&nbsp;%</h3>
     </div>
 
     <div id="priorityBox">
@@ -59,28 +73,16 @@
         <img id="dexImg" src="assets/shiba.png" class="icon"></img>
         <h3 class="label">DEX</h3>
     </div>
-
-    <h3 id="amountInlabel" class="label">Amount In / Tokens</h3>
-    <input placeholder="0.0" id="amountIn" class="greyDiv select"/>
-    <div id="maxButton" class="greyDiv">MAX</div>
-    <img class="arrow" src="assets/arrow.png"></img>
-
-    <div id="onePercButton" class="greyDiv disabled">1%</div> <!-- should be square by default-->
-    <div id="twoPercButton" class="greyDiv disabled">2%</div>
-    <input placeholder="&nbsp;&nbsp;&nbsp;&nbsp;%" id="customPercent" class="greyDiv disabledInput"/>
-
-    <img src="assets/vert_short.png" class="vert_short vs1">
-    <img src="assets/vert_short.png" class="vert_short vs2">
-
+</div>
     <button id="swapButton">
         <h3 class="snipeText">SNIPE</h3>
     </button>  
     
-    <h3  class="label" id="ryoshiLabel">Ryoshi Mode</h3>
 </div>
 
     <script src="https://unpkg.com/@walletconnect/web3-provider@1.7.1/dist/umd/index.min.js"></script>
     <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script>
     <script src="dapp.js"></script>
-    <script src="obcss.js" ></script>
+    <srcipt src="obcss.js"></script>
+
 </body>
